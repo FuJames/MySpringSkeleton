@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.datayes.paas.skeleton.process.dao.UserMapper">
+
+    <resultMap id="UserMap" type="com.datayes.paas.skeleton.process.entity.User" autoMapping="true">
+        <id column="id" property="id"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+
+    <select id="selectAll" resultMap="UserMap">
+      select id,
+              name,
+              description,
+              create_time,
+              update_time
+          from user;
+    </select>
+
+    <select id="select" resultMap="UserMap">
+        select id,
+        name,
+        description,
+        create_time,
+        update_time
+        from user where id = #{id};
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id" parameterType="User">
+        insert into user (name, description, create_time, update_time)
+        values (#{name}, #{description}, now(), now())
+    </insert>
+
+    <update id="update" parameterType="com.datayes.paas.skeleton.process.entity.User">
+        update user set
+        name = #{name},
+        description = #{description},
+        updateTime = now()
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from user where id = #{id}
+    </delete>
+
+</mapper>

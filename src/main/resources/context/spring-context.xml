@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<context:property-placeholder
+		file-encoding="UTF-8" ignore-resource-not-found="true"
+		location="classpath*:context/*.properties" />
+
+	<context:component-scan base-package="com.datayes.paas.skeleton">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close" p:driverClass="com.mysql.jdbc.Driver" p:user="${skeleton.database.username}"
+		p:password="${skeleton.database.password}" p:jdbcUrl="${skeleton.database.url}"
+		p:minPoolSize="${skeleton.database.maxPool}" p:maxPoolSize="${skeleton.database.maxPool}"
+		p:maxIdleTime="${skeleton.database.maxIdle}" />
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		p:dataSource-ref="dataSource" />
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:typeAliasesPackage="com.datayes.paas.skeleton.process.entity"
+		p:dataSource-ref="dataSource"
+		p:mapperLocations="classpath*:mappers/**/*.xml" />
+
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.datayes.paas.skeleton.process.dao" />
+	</bean>
+
+    <!--Redis Configuration-->
+	<bean id="jedisConnFactory"
+		class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+		p:hostName="${skeleton.redis.host}" p:port="${skeleton.redis.port}" />
+
+	<!-- redis template definition -->
+	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"
+		p:connectionFactory-ref="jedisConnFactory">
+		<property name="defaultSerializer">
+			<bean
+				class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+		</property>
+	</bean>
+</beans>
