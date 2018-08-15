@@ -1,4 +1,4 @@
-package com.datayes.paas.skeleton.common.model;
+package com.fqz.skeleton.model;
 
 import javax.naming.ConfigurationException;
 import java.util.HashMap;

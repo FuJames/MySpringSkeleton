@@ -1,6 +1,6 @@
-package com.datayes.paas.skeleton.api.interceptor;
+package com.fqz.skeleton.api.interceptor;
 
-import com.datayes.paas.skeleton.common.Interceptor;
+import com.fqz.skeleton.common.Interceptor;
 import org.springframework.stereotype.Component;
 
 @Component

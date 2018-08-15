@@ -14,7 +14,7 @@
 		file-encoding="UTF-8" ignore-resource-not-found="true"
 		location="classpath*:context/*.properties" />
 
-	<context:component-scan base-package="com.datayes.paas.skeleton">
+	<context:component-scan base-package="com.fqz.skeleton">
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
@@ -22,7 +22,7 @@
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
-		destroy-method="close" p:driverClass="com.mysql.jdbc.Driver" p:user="${skeleton.database.username}"
+		destroy-method="close" p:driverClass="${skeleton.database.driverClass}" p:user="${skeleton.database.username}"
 		p:password="${skeleton.database.password}" p:jdbcUrl="${skeleton.database.url}"
 		p:minPoolSize="${skeleton.database.maxPool}" p:maxPoolSize="${skeleton.database.maxPool}"
 		p:maxIdleTime="${skeleton.database.maxIdle}" />
@@ -31,12 +31,12 @@
 		p:dataSource-ref="dataSource" />
 	<bean id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean"
-		p:typeAliasesPackage="com.datayes.paas.skeleton.process.entity"
+		p:typeAliasesPackage="com.fqz.skeleton.model.entity"
 		p:dataSource-ref="dataSource"
 		p:mapperLocations="classpath*:mappers/**/*.xml" />
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.datayes.paas.skeleton.process.dao" />
+		<property name="basePackage" value="com.fqz.skeleton.dao" />
 	</bean>
 
     <!--Redis Configuration-->

@@ -1,9 +1,7 @@
-package com.datayes.paas.skeleton.common.exception;
+package com.fqz.skeleton.exception;
 
 
-import com.datayes.paas.skeleton.common.model.ResultType;
-
-import java.io.IOException;
+import com.fqz.skeleton.model.ResultType;
 
 public class CommonException extends Exception {
 

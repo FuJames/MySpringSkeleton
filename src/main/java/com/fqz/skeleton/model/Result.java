@@ -1,6 +1,6 @@
-package com.datayes.paas.skeleton.common.model;
+package com.fqz.skeleton.model;
 
-import com.datayes.paas.skeleton.common.exception.CommonException;
+import com.fqz.skeleton.exception.CommonException;
 
 public class Result {
     private int code;

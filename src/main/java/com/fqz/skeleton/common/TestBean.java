@@ -1,4 +1,4 @@
-package com.datayes.paas.skeleton.common;
+package com.fqz.skeleton.common;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

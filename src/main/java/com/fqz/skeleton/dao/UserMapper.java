@@ -1,6 +1,6 @@
-package com.datayes.paas.skeleton.process.dao;
+package com.fqz.skeleton.dao;
 
-import com.datayes.paas.skeleton.process.entity.User;
+import com.fqz.skeleton.model.entity.User;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

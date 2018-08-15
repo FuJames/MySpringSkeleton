@@ -1,7 +1,7 @@
-package com.datayes.paas.skeleton.business.service;
+package com.fqz.skeleton.service;
 
-import com.datayes.paas.skeleton.common.exception.CommonException;
-import com.datayes.paas.skeleton.process.entity.User;
+import com.fqz.skeleton.exception.CommonException;
+import com.fqz.skeleton.model.entity.User;
 
 public interface TestService {
 

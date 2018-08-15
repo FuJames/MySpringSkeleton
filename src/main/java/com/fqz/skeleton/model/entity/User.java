@@ -1,4 +1,4 @@
-package com.datayes.paas.skeleton.process.entity;
+package com.fqz.skeleton.model.entity;
 
 import java.util.Date;
 

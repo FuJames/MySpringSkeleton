@@ -1,7 +1,7 @@
-package com.datayes.paas.skeleton.common;
+package com.fqz.skeleton.common;
 
-import com.datayes.paas.skeleton.common.model.Result;
-import com.datayes.paas.skeleton.common.model.ResultType;
+import com.fqz.skeleton.model.Result;
+import com.fqz.skeleton.model.ResultType;
 import org.aspectj.lang.ProceedingJoinPoint;
 
 public abstract class Interceptor {

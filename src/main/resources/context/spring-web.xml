@@ -12,14 +12,14 @@
        "
         >
 
-    <context:component-scan base-package="com.datayes.paas.skeleton.api.controller"/>
+    <context:component-scan base-package="com.fqz.skeleton.api.controller"/>
 
     <mvc:default-servlet-handler/>
 
     <mvc:annotation-driven/>
     <aop:config>
         <aop:pointcut id="controllerPointcut"
-                      expression="execution(* com.datayes.paas.skeleton.api.controller.*.*(..))"/>
+                      expression="execution(* com.fqz.skeleton.api.controller.rest..*.*(..))"/>
         <aop:aspect ref="returnResultInterceptor">
             <aop:around method="handler" pointcut-ref="controllerPointcut" />
         </aop:aspect>
@@ -28,7 +28,7 @@
 
     <!--<aop:config>-->
         <!--<aop:pointcut id="controllerPointcut"-->
-                      <!--expression="execution(* com.datayes.paas.skeleton.api.controller.*.*(..))"/>-->
+                      <!--expression="execution(* com.fqz.skeleton.api.controller.*.*(..))"/>-->
         <!--<aop:advisor pointcut-ref="controllerPointcut" advice-ref="returnResultInterceptor" order="0"/>-->
     <!--</aop:config>-->
 
@@ -42,4 +42,8 @@
         </property>
     </bean>
 
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="internalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/page/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
 </beans>

@@ -1,4 +1,4 @@
-package com.datayes.paas.skeleton.common;
+package com.fqz.skeleton.common;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;

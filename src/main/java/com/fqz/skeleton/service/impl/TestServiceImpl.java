@@ -1,10 +1,10 @@
-package com.datayes.paas.skeleton.business.service.impl;
+package com.fqz.skeleton.service.impl;
 
-import com.datayes.paas.skeleton.business.service.TestService;
-import com.datayes.paas.skeleton.common.exception.CommonException;
-import com.datayes.paas.skeleton.common.model.ResultType;
-import com.datayes.paas.skeleton.process.dao.UserMapper;
-import com.datayes.paas.skeleton.process.entity.User;
+import com.fqz.skeleton.service.TestService;
+import com.fqz.skeleton.exception.CommonException;
+import com.fqz.skeleton.model.ResultType;
+import com.fqz.skeleton.dao.UserMapper;
+import com.fqz.skeleton.model.entity.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.datayes.paas.skeleton.process.dao.UserMapper">
+<mapper namespace="com.fqz.skeleton.dao.UserMapper">
 
-    <resultMap id="UserMap" type="com.datayes.paas.skeleton.process.entity.User" autoMapping="true">
+    <resultMap id="UserMap" type="com.fqz.skeleton.model.entity.User" autoMapping="true">
         <id column="id" property="id"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
@@ -32,7 +32,7 @@
         values (#{name}, #{description}, now(), now())
     </insert>
 
-    <update id="update" parameterType="com.datayes.paas.skeleton.process.entity.User">
+    <update id="update" parameterType="com.fqz.skeleton.model.entity.User">
         update user set
         name = #{name},
         description = #{description},
